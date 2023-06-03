@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Alta de Personas</title>
+
+  <!-- Estilos CSS -->
+  <link rel="stylesheet" type="text/css" href="styles.css">
+
+</head>
+<body>
+
+  <!-- Archivos JS -->
+  <script src="functions.js"></script>
+  <script src="dom.js"></script>
+
+  <script>
+    var selectElement = document.getElementById('ciudades');
+    selectElement.addEventListener('change', function() {
+    var selectedOptions = Array.from(this.selectedOptions).map(option => option.value);
+    });
+  </script>
+
+</body>
+</html>

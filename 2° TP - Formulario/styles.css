@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+label {
+    display: block;
+    height: 50px;
+  }
+
+input {
+    margin-left: 15px;
+}
+
+select {
+    margin-left: 5px;
+}
+
+.false-button {
+    margin-left: 320px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
