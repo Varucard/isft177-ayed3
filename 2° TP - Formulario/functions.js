@@ -1,3 +1,23 @@
+$(document).ready(function() {
+  $('.chosen-select').chosen();
+
+  $('#formulario').submit(function(event) {
+      event.preventDefault(); // Evitar que el formulario se envíe automáticamente
+
+      // Obtener los valores de los elementos
+      var opciones = $('#ciudades').val();
+      var input1 = $('#nombre').val();
+      var input2 = $('#edad').val();
+
+      // Hacer algo con los valores obtenidos
+      console.log('Opciones seleccionadas:', opciones);
+      console.log('Input 1:', input1);
+      console.log('Input 2:', input2);
+
+      // Aquí puedes realizar cualquier acción adicional con los datos obtenidos, como enviarlos a un servidor o procesarlos en JavaScript.
+  });
+});
+
 /**
  * Pinta el contenido que se encuentre dentro del arreglo pasado dentro de una lista no ordenada
  * La lista no ordenada tambien es recibida por parametro

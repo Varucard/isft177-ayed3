@@ -1,6 +1,10 @@
 window.onload = function () {
 
+  // Variables
   const body = document.body;
+  const div1 = document.createElement('div');
+  const div2 = document.createElement('div');
+  const div3 = document.createElement('div');
   const sectionTitulo = document.createElement('section');
   const sectionFormulario = document.createElement('section');
   const form = document.createElement('form');
@@ -12,9 +16,11 @@ window.onload = function () {
   const inputEdad = document.createElement('input');
   const inputButton = document.createElement('input');
   const selectCiudad = document.createElement('select');
+  const script = document.createElement('script');
   
   const ciudades = [ 'Libertad', 'Parque San Martin', 'Merlo Centro', 'San Antonio de Padua', 'Ituzaingo', 'Moreno', 'Ciudadela' ];
 
+  // seteo el texto visible
   h1.textContent = 'Formulario de Alta de Personas';
   labelNombre.textContent = 'Nombre y Apellido:';
   labelEdad.textContent = 'Edad:';
@@ -27,15 +33,16 @@ window.onload = function () {
   // <section> del Formulario
   body.appendChild(sectionFormulario);
   sectionFormulario.appendChild(form);
+  form.setAttribute('id', 'formulario');
 
-  // Ingreso del Nombre
+  // ********** Ingreso del Nombre ********** 
   inputNombre.setAttribute('id', 'nombre');
   inputNombre.setAttribute('type', 'text');
   inputNombre.setAttribute('required', 'required');
   labelNombre.appendChild(inputNombre);
   form.appendChild(labelNombre);
 
-  // Ingreso de la Edad
+  // ********** Ingreso de la Edad ********** 
   inputEdad.setAttribute('id', 'edad');
   inputEdad.setAttribute('type', 'number');
   inputEdad.setAttribute('required', 'required');
@@ -43,86 +50,57 @@ window.onload = function () {
   inputEdad.setAttribute('max', '110');
   labelEdad.appendChild(inputEdad);
   form.appendChild(labelEdad);
+  
+  // ********** Ingreso de las Ciudades ********** 
 
-  // Ingreso de las Ciudades
+  // Creo unos contenedores para trabajar con los estilos
+  form.appendChild(div1);
+  form.appendChild(div2);
+  form.appendChild(div3);
+
+  $(document).ready(function() {
+    $('.chosen-select').chosen();
+  });
+
+  // Genero un valor vacio para que quede limpia la lista
+  optionSelect = document.createElement('option');
+  optionSelect.setAttribute('value', '');
+  selectCiudad.appendChild(optionSelect)
+
+  // Creo el listado en base a un arreglo
   ciudades.forEach(function(ciudad) {
     optionSelect = document.createElement('option');
     optionSelect.textContent = ciudad;
     optionSelect.setAttribute('value', ciudad);
     selectCiudad.appendChild(optionSelect)
   });
+
+  // Seteo propiedades del Select
   selectCiudad.setAttribute('id', 'ciudades');
+  selectCiudad.setAttribute('title', 'ciudades');
+  selectCiudad.setAttribute('class', 'chosen-select')
   selectCiudad.setAttribute('multiple', 'multiple');
   selectCiudad.setAttribute('required', 'required');
-  labelCiudad.appendChild(selectCiudad)
-  form.appendChild(labelCiudad);
+
+  // Levanto los contenedores con su respectivo contenido
+  div1.setAttribute('class', 'container')
+  div1.appendChild(div2);
+  div1.appendChild(div3);
+
+  div2.setAttribute('class', 'label-container')
+  div2.appendChild(labelCiudad);
+
+  div3.setAttribute('class', 'chosen-container');
+  div3.appendChild(selectCiudad);
   
-  // Boton 
+  // ********** Boton **********  
   inputButton.textContent = 'Enviar';
-  inputButton.setAttribute('class', 'false-button');
+  inputButton.setAttribute('class', 'submit-button');
   inputButton.setAttribute('value', 'Enviar');
   inputButton.setAttribute('type', 'submit');
-  form.appendChild(inputButton);
+  div1.appendChild(inputButton);
 
-
-  function mostrarOpciones() {
-    var lista = document.getElementById("ciudades");
-    lista.size = lista.options.length;
-  }
-
-  function mostrarSeleccion() {
-    var lista = document.getElementById("ciudades");
-    var seleccionadas = [];
-  
-    for (var i = 0; i < lista.options.length; i++) {
-      if (lista.options[i].selected) {
-        seleccionadas.push(lista.options[i].value);
-      }
-    }
-  }
-
-
-  // Listado de Tareas
-  // Obtengo la Lista por ID
-  const lista = document.getElementById('list');
-  // Obtengo lo ingresado por Input por ID
-  const ingreso = document.getElementById('input');
-  // Obtengo el Boton para saber cuando lo presionan
-  const boton = document.getElementById('button');
-
-  // Llamo a la función para generar el contenido de la lista dentro de la Pagina
-  pintarLista(tareas, lista);
-  titulo;
-
-  // Agrego un escuchador para saber cuando se apreta el boton y obtener el valor del input
-  boton.addEventListener('click', function() {
-
-    // Valido que no se ingresen cosas raras
-    if (!(validarString(ingreso.value))) {
-      
-      // En caso de que no Capitalizo el valor ingresado
-      valorIngresado = capitalizarPrimerLetra(ingreso.value)
-      
-      // Valido que el valor ingreso no este duplicado
-      if (!validarDuplicado(tareas, valorIngresado)) {
-        
-        // Si no esta duplicado lo meto dentro del arreglo
-        tareas.push(valorIngresado);
-        
-        // Agrego el Elemento a lista
-        agregarElementoLista(valorIngresado, lista);
-      } else {
-
-        // Si es duplicado se lo notifico al Usuario
-        mensajePantalla(`El valor ingresado '${valorIngresado}' ya se encuentra en la lista`);
-      }
-
-    } else {
-
-      // En caso de que si le aviso al Usuario que no haga cosas raras
-      mensajePantalla('Por favor no ingrese cosas raras al sistema');
-    }
-    
-  });
+  script.setAttribute('url', 'functions.js');
+  body.appendChild(script);
 
 }

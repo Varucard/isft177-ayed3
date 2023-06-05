@@ -1,22 +1,38 @@
 body {
+    padding: 0;
+    margin: 0;
     font-family: Arial, sans-serif;
 }
 
 label {
     display: block;
     height: 50px;
+    margin: 5px;
   }
 
 input {
-    margin-left: 15px;
+    margin: 6px;
 }
 
-select {
-    margin-left: 5px;
+.container {
+    position: relative;
+    display: inline-block;
 }
 
-.false-button {
-    margin-left: 320px;
-    padding-left: 20px;
-    padding-right: 20px;
+.submit-button {
+    position: absolute;
+    bottom: -30px;
+    right: -50px;
+}
+
+.label-container {
+    display: inline-block;
+    width: 66px; /* Ancho fijo del label */
+    text-align: right; /* Alinear el texto del label a la derecha */
+}
+
+.chosen-container {
+    display: inline-block;
+    width: 200px; /* Ancho fijo de la lista desplegable */
+    vertical-align: top; /* Alinear la lista desplegable en la parte superior */
 }

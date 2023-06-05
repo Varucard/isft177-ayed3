@@ -6,22 +6,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulario de Alta de Personas</title>
 
+  <!-- Chosen es un complemento de jQuery que brinda una mejor experiencia de usuario en las listas desplegables -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css" />
+  
   <!-- Estilos CSS -->
   <link rel="stylesheet" type="text/css" href="styles.css">
+
+  <!-- Armador de la pagina -->
+  <script src="dom.js"></script>
+
+  <!-- Librerias JQuery - Chosen-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
 
 </head>
 <body>
 
-  <!-- Archivos JS -->
-  <script src="functions.js"></script>
-  <script src="dom.js"></script>
-
   <script>
-    var selectElement = document.getElementById('ciudades');
-    selectElement.addEventListener('change', function() {
-    var selectedOptions = Array.from(this.selectedOptions).map(option => option.value);
+    $(document).ready(function() {
+        $('.chosen-select').chosen();
+
+        $('#formulario').submit(function(event) {
+            event.preventDefault(); // Evitar que el formulario se envíe automáticamente
+
+            // Obtener los valores de los elementos
+            var opciones = $('#ciudades').val();
+            var input1 = $('#nombre').val();
+            var input2 = $('#edad').val();
+
+            // Hacer algo con los valores obtenidos
+            console.log('Opciones seleccionadas:', opciones);
+            console.log('Input 1:', input1);
+            console.log('Input 2:', input2);
+
+            // Aquí puedes realizar cualquier acción adicional con los datos obtenidos, como enviarlos a un servidor o procesarlos en JavaScript.
+        });
     });
-  </script>
+</script>
 
 </body>
 </html>
