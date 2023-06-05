@@ -16,7 +16,6 @@ window.onload = function () {
   const inputEdad = document.createElement('input');
   const inputButton = document.createElement('input');
   const selectCiudad = document.createElement('select');
-  const script = document.createElement('script');
   
   const ciudades = [ 'Libertad', 'Parque San Martin', 'Merlo Centro', 'San Antonio de Padua', 'Ituzaingo', 'Moreno', 'Ciudadela' ];
 
@@ -58,10 +57,6 @@ window.onload = function () {
   form.appendChild(div2);
   form.appendChild(div3);
 
-  $(document).ready(function() {
-    $('.chosen-select').chosen();
-  });
-
   // Genero un valor vacio para que quede limpia la lista
   optionSelect = document.createElement('option');
   optionSelect.setAttribute('value', '');
@@ -100,7 +95,69 @@ window.onload = function () {
   inputButton.setAttribute('type', 'submit');
   div1.appendChild(inputButton);
 
-  script.setAttribute('url', 'functions.js');
-  body.appendChild(script);
+  // Capturo los datos del formulario y permite el despliegue del listado
+  $(document).ready(function() {
+    $('.chosen-select').chosen();
+
+    $('#formulario').submit(function(event) {
+      event.preventDefault(); // Evitar que el formulario se envíe automáticamente
+
+      // Obtener los valores de los elementos
+      var nombre = $('#nombre').val();
+      var edad = $('#edad').val();
+      var ciudadesUsuario = $('#ciudades').val();
+      var contador = 0;
+
+      // Valido que el nombre sea correcto
+      if (validarString(nombre, /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/)) {
+        this.reset();
+        $('#ciudades').val('').trigger('chosen:updated');
+        mensajePantalla('Por favor ingrese un nombre valido');
+        return false;
+      }
+
+      // Valido el ingreso de la edad
+      if (validarString(edad, /^[0-9]+$/)) {
+        if (edad < 18 || edad > 110) {
+          this.reset();
+          $('#ciudades').val('').trigger('chosen:updated');
+          mensajePantalla('La edad no puede ser menos de 18 o mayor a 110');
+          return false;
+        }    
+      } else {
+        this.reset();
+        $('#ciudades').val('').trigger('chosen:updated');
+        mensajePantalla('El dato de Edad es incorrecto');
+        return false;
+      }
+
+      // Valido que se seleccione una ciudad al menos y no se agreguen otras
+      if (validarDuplicado(ciudades, '')) {
+        this.reset();
+        $('#ciudades').val('').trigger('chosen:updated');
+        mensajePantalla('Por favor seleccione al menos una ciudad');
+        return false;
+      } else {
+        // Recorro el listado original verificando que los datos ingresados sean iguales
+        ciudadesUsuario.forEach(function(ciudad) {
+          if (!ciudades.includes(ciudad)) contador++;
+        });
+
+        // De lo contrario te bocho
+        if (contador > 0) {
+          this.reset();
+          $('#ciudades').val('').trigger('chosen:updated');
+          mensajePantalla('Por favor seleccione solo ciudades pre-cargadas');
+          return false;
+        }
+      }
+
+      // Si todo esta bien, le aviso al Usuario
+      this.reset();
+      $('#ciudades').val('').trigger('chosen:updated');
+      mensajePantalla('Datos guardados exitosamente');
+      return false;
+    });
+  });
 
 }
