@@ -1,0 +1,28 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: Arial, sans-serif;
+}
+
+.div_form {
+  margin: 15px;
+}
+
+.div_espacios {
+  margin-bottom: 25px;
+}
+
+.select_ingreso {
+  padding-right: 35px;
+}
+
+.button {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.espacio_input {
+  margin-left: 5px;
+}

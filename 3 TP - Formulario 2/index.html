@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" type="text/css" href="styles.css">
+
+  <title>Formulario creado</title>
+</head>
+<body>
+
+  <div class="div_form">
+    <form method="get" action="#" id="formulario" novalidate>
+      <div class="div_espacios">
+        <label>Tipo de Control: </label>
+          <select class="select_ingreso" id="selector" required>
+          <option value="text" selected>text</option>
+          <option value="password">password</option>
+          <option value="color">color</option>
+          <option value="number">number</option>
+          <option value="email">email</option>
+        </select>
+      </div>
+      <div class="div_espacios">
+        <label>Nombre: </label>
+        <input type="text" id="nombre" required>
+      </div>
+      <div class="div_espacios">
+        <label>ID (Opcional): </label>
+        <input type="text" id="id">
+      </div>
+      <div class="div_espacios">
+        <label>Etiqueta (label - Opcional): </label>
+        <input type="text" id="etiqueta">
+      </div>
+      <div class="div_espacios">
+        <input class="button" type="submit" value="Crear">
+      </div>
+    </form>
+  </div>
+
+  <script src="dom.js"></script>
+  <script src="functions.js"></script>
+
+</body>
+</html>
