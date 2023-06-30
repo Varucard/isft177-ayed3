@@ -8,7 +8,7 @@ window.onload = () => {
   const label = document.createElement('label');
   const input = document.createElement('input');
 
-  formulario = document.getElementById('formulario')
+  const formulario = document.querySelector("form");
   selector = document.getElementById('selector')
   nombre = document.getElementById('nombre')
   id = document.getElementById('id')

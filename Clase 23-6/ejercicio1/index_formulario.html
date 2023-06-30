@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ISFT177 - Clase 23-6-2023 - Ejercicio 1</title>
+  </head>
+  <body>
+    <form method="get" action="#" novalidate>
+      <div>
+        <label for="tipocontrol">Tipo de control:</label>
+        <select name="tipocontrol" id="tipocontrol" required>
+          <option value="text" selected>text</option>
+          <option value="password">password</option>
+          <option value="color">color</option>
+          <option value="number">number</option>
+          <option value="email">email</option>
+        </select>
+      </div>
+      <div>
+        <label for="nombre">Nombre: </label>
+        <input type="text" name="nombre" id="nombre" required />
+      </div>
+      <div>
+        <label for="id">ID (opcional): </label>
+        <input type="text" name="id" id="id" />
+      </div>
+      <div>
+        <label for="etiqueta">Etiqueta (opcional): </label>
+        <input type="text" name="etiqueta" id="etiqueta" />
+      </div>
+      <div>
+        <button type="submit">Crear</button>
+      </div>
+    </form>
+    <script src="script_formulario.js"></script>
+  </body>
+</html>

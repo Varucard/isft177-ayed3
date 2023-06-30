@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" type="text/css" href="styles.css">
+
+  <title>1° Parcial</title>
+</head>
+<body>
+
+  <div class="div_form">
+    <form method="post" action="#" id="formulario">
+    <div class="div_espacios">
+      <label>Nombre: </label>
+      <input type="text" id="nombre" required>
+    </div>
+    <div class="div_espacios">
+      <label>Apellido: </label>
+      <input type="text" id="apellido" required>
+    </div>
+      <div class="div_espacios">
+        <label>Ciudad: </label>
+          <select class="select_ingreso" id="ciudad" required></select>
+      </div>
+      <div class="div_espacios">
+        <label>Color favorito: </label>
+        <input type="color" id="color" required>
+      </div>
+      <div class="div_espacios">
+        <label>Fecha de nacimiento: </label>
+        <input type="date" id="fecha_nacimiento">
+      </div>
+      <div class="div_espacios">
+        <label>Salario bruto: </label>
+        <input type="number" id="salario" required>
+      </div>
+      <div class="div_espacios">
+        <input class="button" type="submit" value="Dar de alta">
+      </div>
+    </form>
+  </div>
+  
+  <script src="dom.js"></script>
+  <script src="functions.js"></script>
+  
+</body>
+</html>
