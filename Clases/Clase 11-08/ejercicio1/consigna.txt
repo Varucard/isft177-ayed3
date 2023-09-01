@@ -1,0 +1,16 @@
+1) Crear una función que tome dos parametros:
+    un tipo de elemento HTML
+    el contenido del elemento
+
+Y que retorne un objeto HTMLElement cuyo tipo sea el elemento pasado
+por parametro y que el contenido sea el pasado por parametro
+
+Ejemplo:
+
+const encabezado = crearElemento("h1", "Bienvenido");
+console.log(encabezado) --> <h1>Bienvenido</h1>
+
+const parrafo = crearElemento("p", "Bienvenidos a mi página");
+console.log(parrafo) --> <p>Bienvenidos a mi página</p>
+
+

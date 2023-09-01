@@ -1,0 +1,10 @@
+2) Crear una función flecha que reciba dos parámetros:
+
+    - el tipo de una lista (ol / ul)
+    - el número de ítems que la lista va a tener
+
+La función debe crear una lista del tipo recibido por parámetro.
+Luego le agregará a la lista tantos ítems de lista como se reciba por 
+parámetro. El contenido de cada ítem es a elección.
+La función debe retornar la lista con todos sus ítems.
+

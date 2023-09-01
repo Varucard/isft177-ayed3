@@ -1,0 +1,30 @@
+3) Dado el vector:
+
+const c = [4, 9, 49, 81, 100, 121, 36, 16, 25];
+
+Crear, usando la funcion map, un nuevo vector donde cada elemento
+sea la raíz cuadrada de cada elemento del vector c.
+
+4) Dado el vector:
+
+const p = [2, 45, 37, 29, 10, 54, 22];
+
+Crear, usando la función map, un nuevo vector donde cada elemento sea un valor booleano indicando si el elemento correspondiente del vector p es par o impar.
+
+5) Dado el vector de objetos:
+const personas = [
+    { 
+        nombre: "Lucho", 
+        edad: 30 
+    },
+    {
+        nombre: "Pepe",
+        edad: 12
+    },
+    {
+        nombre: "Epifanio",
+        edad: 76
+    }
+];
+Crear otro vector que contenga objetos indicando el nombre de la persona y su año de 
+nacimiento
