@@ -38,33 +38,6 @@ const alumnosConNotas = [
   },
 ];
 
-const sumaPosImpar = v.reduce((acumulador, item, indice) => {
-  return indice % 2 === 1 ? acumulador + item : acumulador;
-}, 0);
-
-const aprobadoDesaprobados = alumnos.reduce((acumulador, item) => {
-  item.promedio >= 7 ? acumulador.aprobados++ : acumulador.desaprobados++
-
-  return acumulador
-}, {aprobados: 0, desaprobados: 0})
-
-const alumnosConPromedio = alumnosConNotas.map(item => {
-  return {
-    nombre: item.nombre,
-    promedio: item.notas.reduce((acumulador, item, indice, arreglo) => { return acumulador + item / arreglo.length; }, 0)
-  }
-})
-
-/**
-*Dado un arreglo de paises y provincias, devolver un arreglo de objetos
-*donde la estructura de cada uno de ellos sea:
-*
-* [
-*   { pais: "argentina", provincia: "buenos aires"},
-*   ...
-* ]
-*Considerar solo los paises que tengan mas de 2 provincias.
-*/
 const paisesConProvincias = [
   {
     pais: "Argentina",
@@ -84,40 +57,60 @@ const paisesConProvincias = [
   }
 ];
 
-const algo = paisesConProvincias.filter(item => item.provincias.length > 2);
+function numeroLoco(multiplicador) {
+  return Math.round(Math.random() * multiplicador);
+} 
 
-const algo2 = algo.map(item => {
+const sumaPosImpar = v.reduce((acumulador, item, indice) => {
+  return indice % 2 === 1 ? acumulador + item : acumulador;
+}, 0);
 
-  aux = [];
+const aprobadoDesaprobados = alumnos.reduce((acumulador, item) => {
+  item.promedio >= 7 ? acumulador.aprobados++ : acumulador.desaprobados++
 
-  item.provincias.forEach(provincia => {
-    aux.push({
-      pais: item.pais,
-      provincia: provincia
-    })
-  });
+  return acumulador
+}, {aprobados: 0, desaprobados: 0})
 
-  return aux;
+const alumnosConPromedio = alumnosConNotas.map(item => {
+  return {
+    nombre: item.nombre,
+    promedio: item.notas.reduce((acumulador, item, indice, arreglo) => { return acumulador + item / arreglo.length; }, 0)
+  }
 })
+
+const resultado = paisesConProvincias.reduce((acumulador, paisConProvincias) => {
+  let provincias;
+
+  // Solo si posee mas de 2 capitales inicio
+  if (paisConProvincias.provincias.length > 2) {
+
+    // Guardo el País para despues armar el objeto
+    const pais = paisConProvincias.pais;
+    // Recorro el arreglo de las provincias de cada pais con map para generar el objeto
+    provincias = paisConProvincias.provincias.map(provincia => ({
+      pais: pais,
+      provincia: provincia
+    }));
+    
+  }
+
+  return acumulador.concat(provincias);
+
+}, []);
 
 const promesa = new Promise((resolve, reject) => {
   setTimeout(() => {
-    if (numeroLoco() >= 50) 
+    if (numeroLoco(100) >= 50) 
       resolve('Resuelta OK')
     else
       reject ('Espera sentado maquina')
   }, 200);
 })
 
-
-function numeroLoco() {
-  return Math.round(Math.random() * 100);
-} 
-
 console.log(sumaPosImpar);
 console.log(aprobadoDesaprobados);
 console.log(alumnosConPromedio);
-console.log(algo2);
+console.log(resultado);
 
 promesa
   .then((resultado) => console.log(resultado))
