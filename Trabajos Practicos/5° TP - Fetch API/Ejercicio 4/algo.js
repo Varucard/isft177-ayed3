@@ -1,67 +1,54 @@
-const contenedor = document.getElementById('container');
-const listaContainer = document.getElementById('lista');
-const lista = document.createElement('ul');
-const botonAntes = document.getElementById('botonPrevious');
-const botonDespues = document.getElementById('botonNext');
+const columnContainer = document.querySelector('div.columns');
+const previousButton = document.getElementById('previousButton');
+const nextButton = document.getElementById('nextButton');
+let currentPage = 1;
 
-const botones = document.getElementsByTagName('button')
-// Esto se cambia al clickear los botones, maquina, titan
-let paginaActual = 1;
-let cantMaximaPaginas = 9;
+const fetchDigimonData = async (page) => {
+  const response = await fetch(`https://www.digi-api.com/api/v1/digimon?page=${page}`);
+  return response.json();
+};
 
-let request = (async () => {
-  const respuesta = await (await fetch(`https://swapi.dev/api/people/?search=&page=${paginaActual}`)).json();
+const renderDigimon = (digimon) => {
+  const column = document.createElement('div');
+  column.setAttribute('class', 'column');
 
-  respuesta.results.forEach(usuario => {
-    const li = document.createElement('li');
+  const card = `<div class="card">
+    <div class="card-image">
+      <figure class="image is-4by3">
+        <a href="${digimon.href}" target="_blank">
+          <img src="${digimon.image}" alt="${digimon.name}">
+        </a>
+      </figure>
+    </div>
+    <div class="card-content">
+      <div class="media">
+        <div class="card-header-title is-centered" style="height: 50px;">
+          <p class="title is-4">${digimon.name}</p>
+        </div>
+      </div>
+    </div>
+  </div>`;
 
-    li.innerHTML = `<a href="${usuario.url}" target="_blank"> ${usuario.name}</a>`;
+  column.innerHTML = card;
+  columnContainer.appendChild(column);
+};
 
-    lista.textContent = '';
-    lista.appendChild(li);
-  
-  });
+const loadPage = async (page) => {
+  columnContainer.innerHTML = ''; // Limpiar el contenido anterior
+  const response = await fetchDigimonData(page);
+  response.content.forEach(renderDigimon);
+  currentPage = page;
+};
 
-  listaContainer.appendChild(lista);
+// Cargar la primera página al cargar la página
+loadPage(currentPage);
 
-})();
-
-
-container.addEventListener('click', (event) => {
-  const isButton = event.target.nodeName === 'BUTTON';
-
-  if (isButton) {
-    console.log('la');
-    request;
-  }
-})
-
-
-console.log(request);
-
-if(paginaActual == 1) {
-  botonAntes.setAttribute('disabled', true);
-}
-
-botonAntes.addEventListener('click', () => {
-  request;
-  paginaActual--;
-  
-  // Si existe otra pagina, habilita
-  if(paginaActual == cantMaximaPaginas - 1) {
-    botonDespues.removeAttribute('disabled');
+previousButton.addEventListener('click', () => {
+  if (currentPage > 1) {
+    loadPage(currentPage - 1);
   }
 });
 
-botonDespues.addEventListener('click', () => {
-  request;
-  paginaActual++;
-  console.log(paginaActual);
-  
-  if(paginaActual == 9) {
-    botonDespues.setAttribute('disabled', true);
-  }
-  if(paginaActual == 2) {
-    botonAntes.removeAttribute('disabled');
-  }
+nextButton.addEventListener('click', () => {
+  loadPage(currentPage + 1);
 });
