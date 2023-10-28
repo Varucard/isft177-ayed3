@@ -1,0 +1,16 @@
+GET http://localhost:8080/api/personas
+
+###
+
+POST http://localhost:8080/api/personas
+Content-Type: application/json
+
+{
+  "documento": 66777888,
+  "nombre": "Dario",
+  "apellido": "Alfonso"
+}
+
+###
+
+GET http://localhost:8080/api/personas/66777888
