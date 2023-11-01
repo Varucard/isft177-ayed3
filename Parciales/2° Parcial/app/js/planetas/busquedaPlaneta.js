@@ -1,31 +1,31 @@
 const input = document.getElementById('name');
 const boton = document.getElementById('boton');
 const conteinerLista = document.getElementById('lista');
-const listaPersonajes = document.createElement('ul');
+const listaPlanetas = document.createElement('ul');
 const conteiner = document.querySelector('.container');
 const limpiarBoton = document.getElementById('limpiar');
 
 boton.addEventListener('click', () => {
-  listaPersonajes.innerHTML = '';
+  // Limpia el contenido anterior antes de realizar una nueva búsqueda
+  listaPlanetas.innerHTML = '';
   conteinerLista.textContent = '';
 
   (async () => {
+    // Obtengo los datos del personaje buscado
     const respuesta = await (await fetch(`http://localhost:3000/api/planeta_busqueda/${input.value}`)).json();
-
-    console.log(respuesta);
 
     if (respuesta.count === 0) {
       alert('Mandaste cualquiera maestro');
     } else {
-    respuesta.results.forEach(personaje => {
+    respuesta.results.forEach(planeta => {
       const li = document.createElement('li');
   
-      li.textContent = `${personaje.name}`;
+      li.textContent = `${planeta.name}`;
   
-      listaPersonajes.appendChild(li);
+      listaPlanetas.appendChild(li);
     });
 
-    conteinerLista.appendChild(listaPersonajes);
+    conteinerLista.appendChild(listaPlanetas);
   }
   
   })();
@@ -38,7 +38,7 @@ limpiarBoton.addEventListener('click', () => {
   input.value = '';
   
   // Limpia la lista de personajes
-  listaPersonajes.innerHTML = '';
+  listaPlanetas.innerHTML = '';
 
   // Limpia la lista de películas
   listaPeliculas.innerHTML = '';

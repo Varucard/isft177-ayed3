@@ -3,7 +3,7 @@ const axios = require('axios'); // Para realizar solicitudes HTTP
 /**
  * Función utilizada para obtener un listado de 10 personajes de StarWars con su información y posibilidad de paginación
  * @param {string} indice 
- * @returns Retorna un JSON con información de personajes de StarWars
+ * @returns Retorna una Promesa JSON con información de personajes de StarWars
  */
 async function personajesStarWars(indice) {
   try {
@@ -18,7 +18,7 @@ async function personajesStarWars(indice) {
 /**
  * Función utilizada par obtener por indice un personaje con su información
  * @param {string} indice 
- * @returns Retorna un JSON con la información de un personaje de StarWars
+ * @returns Retorna una Promesa JSON con la información de un personaje de StarWars
  */
 async function personajeStarWars(indice) {
   try {
@@ -33,7 +33,7 @@ async function personajeStarWars(indice) {
 /**
  * Función utilizada par obtener por nombre uno o mas personajes con su información
  * @param {personaje} indice 
- * @returns Retorna un JSON con la información de uno o mas personajes de StarWars
+ * @returns Retorna una Promesa JSON con la información de uno o mas personajes de StarWars
  */
 async function buscadorPersonajeStarWars(personaje) {
   try {
@@ -45,6 +45,7 @@ async function buscadorPersonajeStarWars(personaje) {
   }
 }
 
+// Exporto el modulo y las funciones creadas que necesito para poder utilizarlos en otro modulo
 module.exports = {
   personajesStarWars,
   personajeStarWars,

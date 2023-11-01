@@ -3,7 +3,7 @@ const axios = require('axios'); // Para realizar solicitudes HTTP
 /**
  * Función utilizada para obtener un listado de 10 planetas de StarWars con su información y posibilidad de paginación
  * @param {string} indice 
- * @returns Retorna un JSON con información de planetas de StarWars
+ * @returns Retorna una Promesa JSON con información de planetas de StarWars
  */
 async function planetasStarWars(indice) {
   try {
@@ -18,7 +18,7 @@ async function planetasStarWars(indice) {
 /**
  * Función utilizada par obtener por indice un planeta con su información
  * @param {string} indice 
- * @returns Retorna un JSON con la información de un planeta de StarWars
+ * @returns Retorna una Promesa JSON con la información de un planeta de StarWars
  */
 async function planetaStarWars(indice) {
   try {
@@ -33,7 +33,7 @@ async function planetaStarWars(indice) {
 /**
  * Función utilizada par obtener por nombre uno o mas planetas con su información
  * @param {personaje} indice 
- * @returns Retorna un JSON con la información de uno o mas planetas de StarWars
+ * @returns Retorna una Promesa JSON con la información de uno o mas planetas de StarWars
  */
 async function buscadorPlanetaStarWars(planeta) {
   try {

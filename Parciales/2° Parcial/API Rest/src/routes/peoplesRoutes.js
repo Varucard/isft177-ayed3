@@ -1,6 +1,8 @@
 const express = require('express');
+// Me import el modulo de peoplesController para poder utilizarlo en este Modulo
 const apiController = require('../controllers/peoplesControllers');
 
+// Creo un enrutador para definir la rutas de trabajo
 const router = express.Router();
 
 /**
@@ -21,6 +23,7 @@ router.get('/personajes/:indice', async (req, res) => {
  */
 router.get('/personaje/:indice', async (req, res) => {
   try {
+    // Obtengo el parametro que necesito y lo paso al controlador
     const {indice} = req.params;
     const data = await apiController.personajeStarWars(indice);
     res.json(data);
@@ -42,4 +45,5 @@ router.get('/personaje_busqueda/:personaje', async (req, res) => {
   }
 });
 
+// Exporto el router definido para poder llamarlo en "app.js" e iniciarlo
 module.exports = router;

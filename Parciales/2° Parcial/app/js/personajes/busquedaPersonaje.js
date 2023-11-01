@@ -11,6 +11,7 @@ boton.addEventListener('click', () => {
   conteinerLista.textContent = '';
 
   (async () => {
+    // Obtengo los datos del personaje buscado
     const respuesta = await (await fetch(`http://localhost:3000/api/personaje_busqueda/${input.value}`)).json();
 
     if (respuesta.count === 0) {
@@ -56,6 +57,7 @@ boton.addEventListener('click', () => {
     }
   })();
 
+  // Limpia el campo de busqueda
   input.value = '';
 });
 
