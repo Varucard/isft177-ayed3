@@ -1,0 +1,13 @@
+GET http://localhost:3000/api/personajes/1
+###
+GET http://localhost:3000/api/personaje/1
+###
+GET http://localhost:3000/api/personaje_busqueda/sky
+
+###
+
+GET http://localhost:3000/api/planetas/1
+###
+GET http://localhost:3000/api/planeta/1
+###
+GET http://localhost:3000/api/planeta_busqueda/ta
